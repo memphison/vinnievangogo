@@ -374,10 +374,14 @@
   .menu-row:last-child{border-bottom:none;}
   .menu-row .name{font-weight:700; font-size:1rem;}
   .menu-row .size{font-weight:500; font-size:0.85rem; color:var(--ink-soft); display:block; margin-top:2px;}
-  .menu-row .price{font-family:'Bungee'; font-size:1.05rem; color:var(--tomato); white-space:nowrap;}
-  .toppings-list{
-    font-size:0.98rem; line-height:1.9; color:var(--ink-soft);
-  }
+  .menu-row .price{
+    font-family:'Bungee';
+    font-size:1.05rem;
+    line-height:1.5;
+    color:var(--tomato);
+    white-space:nowrap;
+    text-align:right;
+}
   .topping-pill{
     display:inline-block; background:var(--cream-2); border:1.5px solid var(--line);
     border-radius:20px; padding:4px 12px; margin:3px 5px 3px 0; font-size:0.86rem; font-weight:600;
@@ -686,46 +690,151 @@
       <div class="section-head" style="margin-bottom:0;">
         <span class="plaque light">The Menu</span>
         <h2>New York pies, Savannah appetites.</h2>
-        <p>18" large or 14" medium, four sauces to choose from, and enough toppings to argue about for twenty minutes.</p>
+        <p>
+  Hand-tossed New York-style pies, oversized slices, calzones, and enough toppings to keep the table arguing.
+</p>
       </div>
       <a class="btn" href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">Order Online</a>
     </div>
 
     <div class="menu-grid">
-      <div class="menu-cat">
-        <h3>Whole Pies</h3>
-        <div class="cat-note">New York style. Sauces: marinara, pesto, white, or garlic olive oil.</div>
-        <div class="menu-row"><div><div class="name">Medium</div><span class="size">14" — feeds 2-3 hungry people</span></div><div class="price">$18</div></div>
-        <div class="menu-row"><div><div class="name">Large</div><span class="size">18" — feeds a table, or one very committed person</span></div><div class="price">$22</div></div>
-      </div>
 
-      <div class="menu-cat">
-        <h3>Slices</h3>
-        <div class="cat-note">Large sized, sold at the window, gone in about four bites.</div>
-        <div class="menu-row"><div><div class="name">Slice of the Day</div><span class="size">Ask what's up — it changes</span></div><div class="price">$</div></div>
-        <div class="menu-row"><div><div class="name">Build Your Own</div><span class="size">Add any topping below</span></div><div class="price">$</div></div>
-      </div>
-
-      <div class="menu-cat">
-        <h3>Calzone</h3>
-        <div class="cat-note">Ricotta, mozzarella, garlic & herbs, folded and baked golden.</div>
-        <div class="menu-row"><div><div class="name">Calzone</div><span class="size">Served with a side of marinara</span></div><div class="price">$15</div></div>
-      </div>
-
-      <div class="menu-cat">
-        <h3>Spinach Salad</h3>
-        <div class="cat-note">The one salad on a pizza menu, and it earns its spot.</div>
-        <div class="menu-row"><div><div class="name">Spinach Salad</div><span class="size">Mushrooms, white onion, black olives, tomato, banana peppers, Italian vinaigrette on the side</span></div><div class="price">$10</div></div>
-      </div>
-
-      <div class="menu-cat" style="grid-column: span 2;">
-        <h3>Toppings</h3>
-        <div class="cat-note">Pile on as many as your pie can hold.</div>
-        <div class="toppings-list">
-          <span class="topping-pill">Pepperoni</span><span class="topping-pill">Jalapeños</span><span class="topping-pill">Bell Peppers</span><span class="topping-pill">Black Olives</span><span class="topping-pill">Chicken</span><span class="topping-pill">Banana Peppers</span><span class="topping-pill">Broccoli</span><span class="topping-pill">Fresh Mushrooms</span><span class="topping-pill">Spinach</span><span class="topping-pill">Artichoke</span><span class="topping-pill">Green Olives</span><span class="topping-pill">Tomatoes</span><span class="topping-pill">Sun-Dried Tomatoes</span><span class="topping-pill">Feta</span><span class="topping-pill">Ham</span><span class="topping-pill">Salami</span><span class="topping-pill">Onions</span><span class="topping-pill">Pineapple</span><span class="topping-pill">Anchovies</span><span class="topping-pill">Spicy Italian Sausage</span><span class="topping-pill">Hamburger</span><span class="topping-pill">Garlic</span><span class="topping-pill">Extra Cheese</span>
-        </div>
-      </div>
+  <div class="menu-cat">
+    <h3>Pizza by the Pie</h3>
+    <div class="cat-note">
+      Hand-tossed crust with your choice of sauce, topped with parmesan and mozzarella.
     </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Red</div>
+        <span class="size">Our classic house marinara</span>
+      </div>
+      <div class="price">14" $18<br>18" $22</div>
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Pesto</div>
+        <span class="size">Fresh housemade pesto — contains nuts</span>
+      </div>
+      <div class="price">14" $20<br>18" $24</div>
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">White</div>
+        <span class="size">Ricotta, mozzarella, parmesan, and herbs</span>
+      </div>
+      <div class="price">14" $20<br>18" $24</div>
+    </div>
+  </div>
+
+  <div class="menu-cat">
+    <h3>Pizza by the Slice</h3>
+    <div class="cat-note">
+      Our classic red sauce, parmesan, and mozzarella. Large enough to require a strategy.
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Cheese Slice</div>
+        <span class="size">Add classic or premium toppings below</span>
+      </div>
+      <div class="price">$5</div>
+    </div>
+  </div>
+
+  <div class="menu-cat">
+    <h3>Calzones</h3>
+    <div class="cat-note">
+      Ricotta, mozzarella, garlic, and herbs wrapped in dough and baked until golden.
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Calzone</div>
+        <span class="size">Includes two toppings and a side of marinara</span>
+      </div>
+      <div class="price">$15</div>
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Extra Toppings</div>
+      </div>
+      <div class="price">$2</div>
+    </div>
+  </div>
+
+  <div class="menu-cat">
+    <h3>Spinach Salad</h3>
+    <div class="cat-note">
+      Fresh spinach with plenty of company.
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Spinach Salad</div>
+        <span class="size">
+          Tomatoes, black olives, bell peppers, mushrooms, onions, and banana peppers, with housemade Greek vinaigrette on the side
+        </span>
+      </div>
+      <div class="price">$10</div>
+    </div>
+
+    <div class="menu-row">
+      <div>
+        <div class="name">Add Feta</div>
+      </div>
+      <div class="price">$2</div>
+    </div>
+  </div>
+
+  <div class="menu-cat" style="grid-column:span 2;">
+    <h3>Classic Toppings</h3>
+    <div class="cat-note">
+      Large 18": $2.50 each · Medium 14": $1.75 each · Slice: 50¢ each
+    </div>
+
+    <div class="toppings-list">
+      <span class="topping-pill">Pepperoni</span>
+      <span class="topping-pill">Bell Peppers</span>
+      <span class="topping-pill">Tomatoes</span>
+      <span class="topping-pill">Jalapeños</span>
+      <span class="topping-pill">Black Olives</span>
+      <span class="topping-pill">Fresh Garlic</span>
+      <span class="topping-pill">Banana Peppers</span>
+      <span class="topping-pill">Onions</span>
+      <span class="topping-pill">Pineapple</span>
+      <span class="topping-pill">Fresh Mushrooms</span>
+      <span class="topping-pill">Spinach</span>
+      <span class="topping-pill">Green Olives</span>
+    </div>
+  </div>
+
+  <div class="menu-cat" style="grid-column:span 2;">
+    <h3>Premium Toppings</h3>
+    <div class="cat-note">
+      Large 18": $3.50 each · Medium 14": $2.50 each · Slice: $1 each
+    </div>
+
+    <div class="toppings-list">
+      <span class="topping-pill">Spicy Italian Sausage</span>
+      <span class="topping-pill">Ham</span>
+      <span class="topping-pill">Chicken</span>
+      <span class="topping-pill">Salami</span>
+      <span class="topping-pill">Hamburger</span>
+      <span class="topping-pill">Anchovies</span>
+      <span class="topping-pill">Sun-Dried Tomatoes</span>
+      <span class="topping-pill">Feta</span>
+      <span class="topping-pill">Fresh Broccoli</span>
+      <span class="topping-pill">Artichokes</span>
+      <span class="topping-pill">Extra Mozzarella</span>
+    </div>
+  </div>
+
+</div>
 
     <div class="menu-callout">
       <p><span class="scribble">Heads up —</span> tables of 6 or more get a 20% gratuity added and checks can't be split. Nothing personal, just math.</p>
