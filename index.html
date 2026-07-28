@@ -267,22 +267,96 @@
   /* ---------- Reviews ---------- */
   .reviews{background:var(--ink); color:var(--cream);}
   .reviews .section-head p{color:#D9D2BF;}
-  .review-score{
-    display:flex; align-items:center; gap:28px;
-    flex-wrap:wrap;
-    margin-bottom:52px;
-    background:rgba(255,251,242,0.06);
-    border:2px solid rgba(255,251,242,0.25);
-    border-radius:16px;
-    padding:30px 34px;
+  .review-columns{
+    display:grid;
+    grid-template-columns:repeat(3, minmax(0, 1fr));
+    gap:24px;
+    align-items:stretch;
   }
-  .score-big{font-family:'Bungee'; font-size:clamp(3rem,7vw,4.6rem); color:var(--yellow);}
-  .score-stars{color:var(--yellow); font-size:1.6rem; letter-spacing:2px;}
-  .score-sub{font-size:0.98rem; color:#D9D2BF; margin-top:4px;}
-  .review-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+  .review-column{
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+    min-width:0;
+  }
+  .platform-score{
+    text-align:center;
+    padding:4px 16px 0;
+  }
+  .platform-name{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:'Bungee';
+    font-size:0.95rem;
+    margin-bottom:8px;
+  }
+  .platform-icon{
+    width:22px;
+    height:22px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    flex:none;
+    border-radius:50%;
+    font-family:'Work Sans';
+    font-size:13px;
+    font-weight:800;
+    line-height:1;
+  }
+  .platform-icon.google{
+    background:#fff;
+    color:#4285F4;
+  }
+  .platform-icon.facebook{
+    background:#1877F2;
+    color:#fff;
+    font-size:16px;
+  }
+  .platform-icon.tripadvisor{
+    width:26px;
+    border-radius:6px;
+    background:#34E0A1;
+    color:var(--ink);
+    font-size:10px;
+  }
+  .platform-rating{
+    font-family:'Bungee';
+    font-size:clamp(2.4rem, 4.5vw, 3.7rem);
+    line-height:1;
+    color:var(--yellow);
+  }
+  .platform-rating span{
+    font-size:0.38em;
+    color:#D9D2BF;
+    margin-left:3px;
+  }
+  .rating-stars{
+    position:relative;
+    display:inline-block;
+    margin-top:10px;
+    color:#625F57;
+    font-size:1.35rem;
+    letter-spacing:3px;
+    line-height:1;
+  }
+  .rating-stars::before{
+    content:"★★★★★";
+    position:absolute;
+    inset:0;
+    width:90%;
+    overflow:hidden;
+    white-space:nowrap;
+    color:var(--yellow);
+  }
+  .platform-count{
+    margin-top:8px;
+    color:#D9D2BF;
+    font-size:0.95rem;
   }
   .review-card{
+    flex:1;
     background:rgba(255,251,242,0.05);
     border:2px solid rgba(255,251,242,0.18);
     border-radius:14px;
@@ -429,7 +503,7 @@
     .legend-grid, .visit-grid{grid-template-columns:1fr; gap:36px;}
     .legend-photo img{height:auto;}
     .menu-grid{grid-template-columns:1fr; gap:36px;}
-    .review-grid{grid-template-columns:1fr;}
+    .review-columns{grid-template-columns:1fr; gap:48px;}
     .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
     .gallery-grid .wide{grid-column:span 2;}
     .footer-grid{grid-template-columns:1fr; gap:32px;}
@@ -560,31 +634,64 @@
     <div class="section-head">
       <span class="plaque">Don't Just Take Our Word</span>
       <h2>Over 14,000 people can't all be wrong about a pizza place.</h2>
-      <p>Locals, tourists fresh off the trolley, people who moved their whole vacation itinerary around a slice. This is what Savannah's been saying on Google.</p>
+      <p>Locals, tourists fresh off the trolley, people who moved their whole vacation itinerary around a slice. This is what Savannah's been saying online.</p>
     </div>
-    <div class="review-score">
-      <div>
-        <div class="score-big">4.5<span style="font-size:0.4em; color:#D9D2BF;">/5</span></div>
-        <div class="score-stars">★★★★★</div>
+    <div class="review-columns">
+
+      <div class="review-column">
+        <div class="platform-score">
+          <div class="platform-name">
+            <span class="platform-icon google" aria-hidden="true">G</span>
+            <span>Google</span>
+          </div>
+          <div class="platform-rating">4.5<span>/5</span></div>
+          <div class="rating-stars" role="img" aria-label="4.5 out of 5 stars">★★★★★</div>
+          <div class="platform-count">Over 5,600 reviews</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>We ordered our food to go and ate it in the square street seating area in front of the restaurant, our pizza came out piping hot in under 15 minutes. It was a YUGE slice and the BEST pizza I’ve had in a minute.</p>
+          <div class="who">— Jeremy B.</div>
+        </div>
       </div>
-      <div class="score-sub">Based on 5,604 Google reviews... and rising.</div>
-    </div>
-    <div class="review-grid">
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p>We ordered our food to go and ate it in the square street seating area in front of the restaurant, our pizza came out piping hot in under 15 minutes. It was a YUGE slice and the BEST pizza I’ve had in a minute.</p>
-        <div class="who">— Jeremy B.</div>
+
+      <div class="review-column">
+        <div class="platform-score">
+          <div class="platform-name">
+            <span class="platform-icon facebook" aria-hidden="true">f</span>
+            <span>Facebook</span>
+          </div>
+          <div class="platform-rating">96%</div>
+          <div class="rating-stars" role="img" aria-label="4.5 out of 5 stars">★★★★★</div>
+          <div class="platform-count">Over 6,200 reviews</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>I’m from NY and this pizza smells, looks, and tastes amazing! I smelled the pizza from across the market and had to find where it was coming from. I ordered a slice and it was the perfect size. BIG!</p>
+          <div class="who">— Eileen</div>
+        </div>
       </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p>I’m from NY and this pizza smells, looks, and tastes amazing! I smelled the pizza from across the market and had to find where it was coming from. I ordered a slice and it was the perfect size. BIG!</p>
-        <div class="who">— Eileen</div>
+
+      <div class="review-column">
+        <div class="platform-score">
+          <div class="platform-name">
+            <span class="platform-icon tripadvisor" aria-hidden="true">TA</span>
+            <span>Tripadvisor</span>
+          </div>
+          <div class="platform-rating">4.5<span>/5</span></div>
+          <div class="rating-stars" role="img" aria-label="4.5 out of 5 stars">★★★★★</div>
+          <div class="platform-count">Over 3,000 reviews</div>
+        </div>
+
+        <div class="review-card">
+          <div class="stars">★★★★★</div>
+          <p>We got here an hour before they closed and the restaurant was very busy but so friendly and ready to serve us. Our server Kelly was fantastic! First time here and we loved it! Pizza was crispy, cheesy and just hit the spot!</p>
+          <div class="who">— Askley B.</div>
+        </div>
       </div>
-      <div class="review-card">
-        <div class="stars">★★★★★</div>
-        <p>We got here an hour before they closed and the restaurant was very busy but so friendly and ready to serve us. Our server Kelly was fantastic! First time here and we loved it! Pizza was crispy, cheesy and just hit the spot!</p>
-        <div class="who">— Askley B.</div>
-      </div>
+
     </div>
   </div>
 </section>
