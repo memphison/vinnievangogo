@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinnie Van Go-Go's | New York Pizza, Savannah GA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Caveat:wght@500;700&family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --cream:#FFFBF2;
+    --cream-2:#FFF4DC;
+    --yellow:#F4C21E;
+    --yellow-deep:#E0A400;
+    --ink:#1C1A16;
+    --ink-soft:#3A362D;
+    --tomato:#D8452D;
+    --tomato-deep:#B7341E;
+    --basil:#4B6B3A;
+    --line: rgba(28,26,22,0.14);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--cream);
+    color:var(--ink);
+    font-family:'Work Sans', sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  h1,h2,h3{font-family:'Bungee', sans-serif; font-weight:400; margin:0; line-height:1.08;}
+  .scribble{font-family:'Caveat', cursive; font-weight:700;}
+  a{color:inherit;}
+  .wrap{max-width:1180px; margin:0 auto; padding:0 28px;}
+  section{position:relative;}
+
+  /* ---------- Plaque badge (signature element) ---------- */
+  .plaque{
+    display:inline-flex;
+    align-items:center;
+    gap:10px;
+    background:var(--ink);
+    color:var(--yellow);
+    font-family:'Bungee', sans-serif;
+    font-size:13px;
+    letter-spacing:0.06em;
+    padding:10px 22px;
+    border-radius:50% / 60%;
+    border:3px solid var(--yellow);
+    box-shadow: 0 0 0 3px var(--ink);
+    transform:rotate(-2deg);
+  }
+  .plaque.light{
+    background:var(--cream);
+    color:var(--ink);
+    border-color:var(--ink);
+    box-shadow:none;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:var(--cream);
+    border-bottom:3px solid var(--ink);
+  }
+  .nav-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:12px 28px;
+    max-width:1180px; margin:0 auto;
+  }
+  .brand{display:flex; align-items:center; gap:12px; text-decoration:none;}
+  .brand img{height:52px; width:auto; border-radius:50%; border:2px solid var(--ink);}
+  .brand-text{font-family:'Bungee'; font-size:15px; line-height:1.1;}
+  .brand-text span{display:block; font-family:'Work Sans'; font-weight:600; font-size:11px; letter-spacing:0.08em; color:var(--ink-soft); text-transform:uppercase; margin-top:3px;}
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{
+    text-decoration:none; font-weight:700; font-size:14.5px;
+    letter-spacing:0.02em; color:var(--ink);
+    position:relative; padding:4px 0;
+  }
+  nav.links a:hover{color:var(--tomato-deep);}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    font-family:'Bungee'; font-size:13px; letter-spacing:0.03em;
+    padding:14px 24px;
+    background:var(--tomato);
+    color:var(--cream);
+    border:3px solid var(--ink);
+    border-radius:8px;
+    text-decoration:none;
+    box-shadow: 4px 4px 0 var(--ink);
+    transition: transform 0.12s ease, box-shadow 0.12s ease;
+    white-space:nowrap;
+  }
+  .btn:hover{transform:translate(2px,2px); box-shadow:2px 2px 0 var(--ink);}
+  .btn.secondary{background:var(--yellow); color:var(--ink);}
+  .btn.ghost{background:var(--cream); color:var(--ink); box-shadow:none;}
+  .mobile-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:92vh;
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+    border-bottom:5px solid var(--ink);
+  }
+  .hero img.bg{
+    position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+    filter:saturate(1.05);
+  }
+  .hero::after{
+    content:"";
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(28,26,22,0.15) 0%, rgba(28,26,22,0.25) 55%, rgba(28,26,22,0.88) 100%);
+  }
+  .hero-content{
+    position:relative; z-index:2;
+    width:100%;
+    padding:60px 28px 56px;
+    max-width:1180px; margin:0 auto;
+    color:var(--cream);
+  }
+  .hero-eyebrow{
+    display:inline-block;
+    background:var(--yellow);
+    color:var(--ink);
+    font-family:'Bungee'; font-size:12.5px; letter-spacing:0.06em;
+    padding:8px 16px; border-radius:6px; margin-bottom:22px;
+    transform:rotate(-1.5deg);
+    border:2px solid var(--ink);
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 6vw, 5.2rem);
+    color:var(--cream);
+    text-shadow: 3px 3px 0 rgba(0,0,0,0.35);
+  }
+  .hero h1 .accent{color:var(--yellow);}
+  .hero p.sub{
+    font-size:clamp(1.05rem, 1.7vw, 1.35rem);
+    max-width:640px;
+    margin:20px 0 34px;
+    color:#FBF4DE;
+    font-weight:500;
+  }
+  .hero-cta{display:flex; gap:16px; flex-wrap:wrap; margin-bottom:34px;}
+  .hero-stats{
+    display:flex; gap:14px; flex-wrap:wrap;
+  }
+  .stat-chip{
+    background:rgba(255,251,242,0.95);
+    color:var(--ink);
+    border:2px solid var(--ink);
+    border-radius:10px;
+    padding:12px 18px;
+    display:flex; flex-direction:column; gap:2px;
+    min-width:120px;
+  }
+  .stat-chip b{font-family:'Bungee'; font-size:22px; color:var(--tomato-deep);}
+  .stat-chip span{font-size:12px; font-weight:700; letter-spacing:0.03em; text-transform:uppercase; color:var(--ink-soft);}
+
+  /* ---------- Ticker band ---------- */
+  .ticker{
+    background:var(--ink);
+    color:var(--cream);
+    overflow:hidden;
+    white-space:nowrap;
+    border-bottom:5px solid var(--yellow);
+  }
+  .ticker-track{
+    display:inline-block;
+    padding:14px 0;
+    animation: scroll-left 32s linear infinite;
+    font-family:'Bungee';
+    font-size:14px;
+    letter-spacing:0.04em;
+  }
+  .ticker-track span{margin:0 26px; color:var(--yellow);}
+  .ticker-track span.alt{color:var(--cream);}
+  @keyframes scroll-left{
+    from{transform:translateX(0);}
+    to{transform:translateX(-50%);}
+  }
+
+  /* ---------- Generic section spacing ---------- */
+  .section{padding:96px 0;}
+  .section.tight{padding:72px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(1.9rem, 3.6vw, 2.9rem); margin-top:16px;}
+  .section-head p{font-size:1.08rem; color:var(--ink-soft); margin-top:14px;}
+
+  /* ---------- About / Legend ---------- */
+  .legend{background:var(--cream-2); border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);}
+  .legend-grid{
+    display:grid; grid-template-columns:1.05fr 0.95fr; gap:64px; align-items:center;
+  }
+  .legend-photo{position:relative;}
+  .legend-photo img{
+    border-radius:14px; border:4px solid var(--ink);
+    box-shadow:10px 10px 0 var(--tomato);
+  }
+  .legend-copy p{font-size:1.08rem; margin:0 0 18px;}
+  .legend-copy p:last-of-type{margin-bottom:0;}
+  .fun-fact{
+    margin-top:26px;
+    background:var(--yellow);
+    border:3px solid var(--ink);
+    border-radius:10px;
+    padding:18px 20px;
+    display:flex; gap:14px; align-items:flex-start;
+    transform:rotate(-0.6deg);
+  }
+  .fun-fact .fun-icon{font-size:26px; line-height:1;}
+  .fun-fact p{margin:0; font-weight:600; font-size:0.98rem;}
+
+  /* ---------- Reviews ---------- */
+  .reviews{background:var(--ink); color:var(--cream);}
+  .reviews .section-head p{color:#D9D2BF;}
+  .review-score{
+    display:flex; align-items:center; gap:28px;
+    flex-wrap:wrap;
+    margin-bottom:52px;
+    background:rgba(255,251,242,0.06);
+    border:2px solid rgba(255,251,242,0.25);
+    border-radius:16px;
+    padding:30px 34px;
+  }
+  .score-big{font-family:'Bungee'; font-size:clamp(3rem,7vw,4.6rem); color:var(--yellow);}
+  .score-stars{color:var(--yellow); font-size:1.6rem; letter-spacing:2px;}
+  .score-sub{font-size:0.98rem; color:#D9D2BF; margin-top:4px;}
+  .review-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:24px;
+  }
+  .review-card{
+    background:rgba(255,251,242,0.05);
+    border:2px solid rgba(255,251,242,0.18);
+    border-radius:14px;
+    padding:24px;
+  }
+  .review-card .stars{color:var(--yellow); font-size:15px; margin-bottom:12px;}
+  .review-card p{margin:0 0 16px; font-size:0.98rem; color:#EFE9D8;}
+  .review-card .who{font-family:'Caveat'; font-weight:700; font-size:1.3rem; color:var(--yellow);}
+
+  /* ---------- Menu ---------- */
+  .menu-board{
+    background:var(--cream);
+    border-top:3px solid var(--ink);
+  }
+  .menu-top{
+    display:flex; justify-content:space-between; align-items:flex-end; gap:24px; flex-wrap:wrap;
+    margin-bottom:50px;
+  }
+  .menu-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:40px 60px;
+  }
+  .menu-cat{padding-bottom:8px;}
+  .menu-cat h3{font-size:1.3rem; color:var(--tomato-deep); margin-bottom:6px;}
+  .menu-cat .cat-note{font-size:0.9rem; color:var(--ink-soft); margin-bottom:16px; font-style:italic;}
+  .menu-row{
+    display:flex; justify-content:space-between; align-items:baseline;
+    padding:10px 0;
+    border-bottom:1.5px dashed var(--line);
+    gap:16px;
+  }
+  .menu-row:last-child{border-bottom:none;}
+  .menu-row .name{font-weight:700; font-size:1rem;}
+  .menu-row .size{font-weight:500; font-size:0.85rem; color:var(--ink-soft); display:block; margin-top:2px;}
+  .menu-row .price{font-family:'Bungee'; font-size:1.05rem; color:var(--tomato); white-space:nowrap;}
+  .toppings-list{
+    font-size:0.98rem; line-height:1.9; color:var(--ink-soft);
+  }
+  .topping-pill{
+    display:inline-block; background:var(--cream-2); border:1.5px solid var(--line);
+    border-radius:20px; padding:4px 12px; margin:3px 5px 3px 0; font-size:0.86rem; font-weight:600;
+  }
+  .menu-callout{
+    margin-top:44px;
+    background:var(--ink);
+    color:var(--cream);
+    border-radius:14px;
+    padding:26px 30px;
+    display:flex; align-items:center; justify-content:space-between; gap:24px; flex-wrap:wrap;
+  }
+  .menu-callout p{margin:0; font-size:1.02rem; max-width:520px;}
+  .menu-callout .scribble{color:var(--yellow); font-size:1.4rem;}
+
+  /* ---------- Gallery ---------- */
+  .gallery{background:var(--cream-2); border-top:3px solid var(--ink); border-bottom:3px solid var(--ink);}
+  .gallery-grid{
+    display:grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows:170px;
+    gap:16px;
+  }
+  .gallery-grid img{
+    width:100%; height:100%; object-fit:cover; border-radius:10px; border:3px solid var(--ink);
+  }
+  .gallery-grid .tall{grid-row:span 2;}
+  .gallery-grid .wide{grid-column:span 2;}
+
+  /* ---------- Visit / hours ---------- */
+  .visit-grid{
+    display:grid; grid-template-columns:1fr 1fr; gap:60px;
+  }
+  .info-card{
+    background:var(--yellow);
+    border:3px solid var(--ink);
+    border-radius:16px;
+    padding:34px;
+    box-shadow:8px 8px 0 var(--ink);
+  }
+  .info-card h3{font-size:1.25rem; margin-bottom:18px;}
+  .info-row{display:flex; gap:14px; margin-bottom:16px; align-items:flex-start;}
+  .info-row .ic{font-size:20px; line-height:1.4;}
+  .info-row .label{font-weight:800; font-size:0.85rem; text-transform:uppercase; letter-spacing:0.04em; margin-bottom:2px;}
+  .info-row .val{font-weight:500;}
+  .hours-table{width:100%; border-collapse:collapse; margin-top:6px;}
+  .hours-table td{padding:8px 0; border-bottom:1.5px dashed rgba(28,26,22,0.25); font-size:0.98rem;}
+  .hours-table td:first-child{font-weight:800;}
+  .hours-table td:last-child{text-align:right; font-weight:600;}
+  .hours-table tr:last-child td{border-bottom:none;}
+  .hours-note{
+    margin-top:16px; font-family:'Caveat'; font-weight:700; font-size:1.25rem; color:var(--tomato-deep);
+  }
+  .cash-card-badge{
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--ink); color:var(--cream);
+    padding:10px 18px; border-radius:8px; font-family:'Bungee'; font-size:13px;
+    margin-top:20px;
+  }
+
+  /* ---------- Final CTA ---------- */
+  .final-cta{
+    background:var(--tomato);
+    color:var(--cream);
+    text-align:center;
+    padding:90px 28px;
+    border-top:5px solid var(--ink);
+    border-bottom:5px solid var(--ink);
+  }
+  .final-cta h2{font-size:clamp(2rem,4.5vw,3.4rem); color:var(--cream); text-shadow:3px 3px 0 rgba(0,0,0,0.2);}
+  .final-cta p{font-size:1.1rem; max-width:560px; margin:20px auto 34px; color:#FBE3DC;}
+  .final-cta .btn{font-size:15px; padding:18px 34px;}
+  .final-cta .btn.secondary{box-shadow:4px 4px 0 var(--ink);}
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:var(--ink);
+    color:#D9D2BF;
+    padding:56px 28px 28px;
+  }
+  .footer-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:48px;
+    margin-bottom:40px;
+  }
+  .footer-brand{display:flex; gap:14px; align-items:center; margin-bottom:16px;}
+  .footer-brand img{height:48px; border-radius:50%; border:2px solid var(--yellow);}
+  .footer-brand span{font-family:'Bungee'; color:var(--yellow); font-size:16px;}
+  footer h4{font-family:'Bungee'; font-size:13px; color:var(--yellow); letter-spacing:0.04em; margin-bottom:16px;}
+  footer p, footer a{font-size:0.95rem; color:#D9D2BF; text-decoration:none;}
+  footer ul{list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:10px;}
+  .footer-bottom{
+    border-top:1.5px solid rgba(217,210,191,0.2);
+    padding-top:22px;
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    font-size:0.85rem; color:#9B9481;
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 920px){
+    nav.links{display:none;}
+    .mobile-toggle{display:block;}
+    .legend-grid, .visit-grid{grid-template-columns:1fr; gap:36px;}
+    .menu-grid{grid-template-columns:1fr; gap:36px;}
+    .review-grid{grid-template-columns:1fr;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+    .gallery-grid .wide{grid-column:span 2;}
+    .footer-grid{grid-template-columns:1fr; gap:32px;}
+  }
+  @media (max-width:560px){
+    .hero-stats{gap:10px;}
+    .stat-chip{min-width:100px; padding:10px 14px;}
+    .menu-callout{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#top" class="brand">
+      <img src="images/logo.jpg" alt="Vinnie Van Go-Go's logo">
+      <div class="brand-text">Vinnie Van Go-Go's<span>317 W Bryan St · City Market</span></div>
+    </a>
+    <nav class="links">
+      <a href="#legend">The Legend</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#menu">Menu</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <a class="btn" href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">🍕 Order Online</a>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <img class="bg" src="images/exterior-night-patio.jpg" alt="Vinnie Van Go-Go's patio full of people at night">
+  <div class="hero-content">
+    <span class="hero-eyebrow">City Market's Loudest Pizza Corner Since Forever</span>
+    <h1>Slices so big,<br>you'll <span class="accent">lose an ear</span><br>over 'em.</h1>
+    <p class="sub">Fresh dough every night, sauce that means it, and slices the size of a hubcap. This is New York pizza, dropped in the middle of Savannah, and nobody's complaining.</p>
+    <div class="hero-cta">
+      <a class="btn secondary" href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">Order Online for Pickup</a>
+      <a class="btn ghost" href="#menu">See the Menu →</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-chip"><b>4.5★</b><span>on Google</span></div>
+      <div class="stat-chip"><b>5,604</b><span>Google Reviews</span></div>
+      <div class="stat-chip"><b>18"</b><span>Large Pies</span></div>
+      <div class="stat-chip"><b>$</b><span>Cash & Card</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <span>★ 4.5 STARS</span><span class="alt">5,604 GOOGLE REVIEWS</span><span>★ CORNER OF CITY MARKET</span><span class="alt">DOUGH MADE FRESH NIGHTLY</span><span>★ CASH & CARD</span><span class="alt">GENEROUS SLICES SINCE DAY ONE</span>
+    <span>★ 4.5 STARS</span><span class="alt">5,604 GOOGLE REVIEWS</span><span>★ CORNER OF CITY MARKET</span><span class="alt">DOUGH MADE FRESH NIGHTLY</span><span>★ CASH & CARD</span><span class="alt">GENEROUS SLICES SINCE DAY ONE</span>
+  </div>
+</div>
+
+<section class="legend section" id="legend">
+  <div class="wrap legend-grid">
+    <div class="legend-photo">
+      <img src="images/sign-brick.jpg" alt="Vinnie Van Go-Go's hand painted sign on brick wall">
+    </div>
+    <div class="legend-copy">
+      <span class="plaque">The Legend</span>
+      <h2 style="margin-top:18px;">The pizzeria with the guy on the sign.</h2>
+      <p>You've walked past that sign a hundred times: the wild-haired guy with a slice hanging out of his mouth like a paintbrush. That's Vinnie. He's not a real historical painter, but the pun works and the pizza's real, so we let it slide.</p>
+      <p>Neapolitan-style, thin and hearty, made from dough that gets mixed and rested fresh every single night while the rest of Savannah sleeps. Fresh-grated parmesan, real mozzarella, a sauce recipe nobody's allowed to mess with. Order a whole pie or grab a slice the size of your forearm at the walk-up window.</p>
+      <div class="fun-fact">
+        <div class="fun-icon">🚲</div>
+        <p>Fun fact: Vinnie's has delivered pizza around downtown Savannah by bicycle. Somewhere out there, a hot pie is currently being pedaled past a horse carriage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reviews section" id="reviews">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="plaque">Don't Just Take Our Word</span>
+      <h2>5,604 people can't all be wrong about a pizza place.</h2>
+      <p>Locals, tourists fresh off the trolley, people who moved their whole vacation itinerary around a slice — this is what Savannah's been saying on Google.</p>
+    </div>
+    <div class="review-score">
+      <div>
+        <div class="score-big">4.5<span style="font-size:0.4em; color:#D9D2BF;">/5</span></div>
+        <div class="score-stars">★★★★★</div>
+      </div>
+      <div class="score-sub">Based on 5,604 Google reviews — and climbing every weekend the trolleys run.</div>
+    </div>
+    <div class="review-grid">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>One reviewer said this is the only pizza they'll eat in Savannah, full stop — praising the generous portions, the ingredients, and the price all in one breath.</p>
+        <div class="who">— a very loyal regular</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>A visiting local guide said her family ate here three days straight on vacation and never got tired of it — huge flavor, generous cheese-to-sauce ratio, one of their favorite stops every time they're in town.</p>
+        <div class="who">— a repeat vacationer</div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p>Two tourists hopped off the trolley, wandered in on a whim at lunchtime, and were seated immediately despite the crowd — the slices, they said, were exactly what a good pizza place should deliver.</p>
+        <div class="who">— trolley walk-ins turned fans</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="menu-board section" id="menu">
+  <div class="wrap">
+    <div class="menu-top">
+      <div class="section-head" style="margin-bottom:0;">
+        <span class="plaque light">The Menu</span>
+        <h2>New York pies, Savannah appetites.</h2>
+        <p>18" large or 14" medium, four sauces to choose from, and toppings enough to argue about for twenty minutes.</p>
+      </div>
+      <a class="btn" href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">Order Online</a>
+    </div>
+
+    <div class="menu-grid">
+      <div class="menu-cat">
+        <h3>Whole Pies</h3>
+        <div class="cat-note">New York style. Sauces: marinara, pesto, white, or garlic olive oil.</div>
+        <div class="menu-row"><div><div class="name">Medium</div><span class="size">14" — feeds 2-3 hungry people</span></div><div class="price">$18</div></div>
+        <div class="menu-row"><div><div class="name">Large</div><span class="size">18" — feeds a table, or one very committed person</span></div><div class="price">$22</div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3>Slices</h3>
+        <div class="cat-note">Large sized, sold at the window, gone in about four bites.</div>
+        <div class="menu-row"><div><div class="name">Slice of the Day</div><span class="size">Ask what's up — it changes</span></div><div class="price">$</div></div>
+        <div class="menu-row"><div><div class="name">Build Your Own</div><span class="size">Add any topping below</span></div><div class="price">$</div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3>Calzone</h3>
+        <div class="cat-note">Ricotta, mozzarella, garlic & herbs, folded and baked golden.</div>
+        <div class="menu-row"><div><div class="name">Calzone</div><span class="size">Served with a side of marinara</span></div><div class="price">$15</div></div>
+      </div>
+
+      <div class="menu-cat">
+        <h3>Spinach Salad</h3>
+        <div class="cat-note">The one salad on a pizza menu, and it earns its spot.</div>
+        <div class="menu-row"><div><div class="name">Spinach Salad</div><span class="size">Mushrooms, white onion, black olives, tomato, banana peppers, Italian vinaigrette on the side</span></div><div class="price">$10</div></div>
+      </div>
+
+      <div class="menu-cat" style="grid-column: span 2;">
+        <h3>Toppings</h3>
+        <div class="cat-note">Pile on as many as your pie can hold.</div>
+        <div class="toppings-list">
+          <span class="topping-pill">Pepperoni</span><span class="topping-pill">Jalapeños</span><span class="topping-pill">Bell Peppers</span><span class="topping-pill">Black Olives</span><span class="topping-pill">Chicken</span><span class="topping-pill">Banana Peppers</span><span class="topping-pill">Broccoli</span><span class="topping-pill">Fresh Mushrooms</span><span class="topping-pill">Spinach</span><span class="topping-pill">Artichoke</span><span class="topping-pill">Green Olives</span><span class="topping-pill">Tomatoes</span><span class="topping-pill">Sun-Dried Tomatoes</span><span class="topping-pill">Feta</span><span class="topping-pill">Ham</span><span class="topping-pill">Salami</span><span class="topping-pill">Onions</span><span class="topping-pill">Pineapple</span><span class="topping-pill">Anchovies</span><span class="topping-pill">Spicy Italian Sausage</span><span class="topping-pill">Hamburger</span><span class="topping-pill">Garlic</span><span class="topping-pill">Extra Cheese</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="menu-callout">
+      <p><span class="scribble">Heads up —</span> tables of 6 or more get a 20% gratuity added and checks can't be split. Nothing personal, just math.</p>
+      <a class="btn secondary" href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">Skip the Line, Order Ahead</a>
+    </div>
+  </div>
+</section>
+
+<section class="gallery section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="plaque">Proof</span>
+      <h2>What's actually happening in there.</h2>
+    </div>
+    <div class="gallery-grid">
+      <img class="tall" src="images/exterior-dusk.jpg" alt="Vinnie Van Go-Go's storefront at dusk with string lights">
+      <img src="images/slice-mushroom-tomato.jpg" alt="Slice with mushroom and tomato">
+      <img src="images/slice-pepper-onion.jpg" alt="Slice with green pepper, onion, and tomato">
+      <img class="tall" src="images/dough-toss.jpg" alt="Making fresh pizza dough">
+      <img class="wide" src="images/two-slices-drinks.jpg" alt="Two slices of pizza with drinks on an outdoor table">
+      <img src="images/slice-broccoli.jpg" alt="Slice with broccoli">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="visit">
+  <div class="wrap visit-grid">
+    <div>
+      <span class="plaque">Come Find Us</span>
+      <h2 style="margin-top:18px; font-size:clamp(1.9rem,3.6vw,2.6rem);">Corner of City Market. Can't miss it.</h2>
+      <p style="margin-top:16px; color:var(--ink-soft); font-size:1.05rem;">Right at the edge of Franklin Square, tucked into City Market with a patio full of string lights and regulars who don't need to look at the menu anymore.</p>
+      <div class="info-row" style="margin-top:28px;">
+        <div class="ic">📍</div>
+        <div><div class="label">Address</div><div class="val">317 W Bryan St, Savannah, GA 31401</div></div>
+      </div>
+      <div class="info-row">
+        <div class="ic">📞</div>
+        <div><div class="label">Phone</div><div class="val">(912) 233-6394</div></div>
+      </div>
+      <div class="info-row">
+        <div class="ic">🅿️</div>
+        <div><div class="label">Getting there</div><div class="val">Walk-up window & outdoor patio seating right in City Market</div></div>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <h3>Dine-In Hours</h3>
+      <table class="hours-table">
+        <tr><td>Monday – Thursday</td><td>4:00pm – 9:30pm</td></tr>
+        <tr><td>Friday – Saturday</td><td>11:30am – 10:00pm</td></tr>
+        <tr><td>Sunday</td><td>12:00pm – 9:30pm</td></tr>
+      </table>
+      <div class="hours-note">Hours have a way of shifting around here — worth a quick call if you're making a special trip.</div>
+      <div class="cash-card-badge">💵 Cash & Card Accepted</div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap" style="max-width:720px;">
+    <span class="plaque light" style="background:var(--cream);">Hungry Yet?</span>
+    <h2 style="margin-top:20px;">Skip the walk-up line. Get your pie started now.</h2>
+    <p>Order ahead for pickup and let the oven do its thing while you finish parking three blocks away like everyone else downtown.</p>
+    <a class="btn secondary" href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">Order Online for Pickup</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="images/logo.jpg" alt="Vinnie Van Go-Go's logo">
+          <span>Vinnie Van Go-Go's</span>
+        </div>
+        <p>New York style pizza on the corner of City Market. Fresh dough, real cheese, slices you need two hands for.</p>
+      </div>
+      <div>
+        <h4>Find Us</h4>
+        <ul>
+          <li>317 W Bryan St</li>
+          <li>Savannah, GA 31401</li>
+          <li>(912) 233-6394</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get a Slice</h4>
+        <ul>
+          <li><a href="https://order.toasttab.com/online/vinnie-van-go-gos" target="_blank" rel="noopener">Order Online →</a></li>
+          <li><a href="#menu">View Menu →</a></li>
+          <li><a href="#visit">Hours & Directions →</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2026 Vinnie Van Go-Go's. Cash & card, always welcome.</div>
+      <div>317 W Bryan St, Savannah, GA</div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
